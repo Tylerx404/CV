@@ -2,6 +2,7 @@
   "name": "CV",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "astro dev",
     "start": "pnpm run build && astro preview",
