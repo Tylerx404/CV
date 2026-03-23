@@ -1,0 +1,24 @@
+---
+import Controls from "@/components/Controls.astro";
+import CVContent from "@/components/CVContent.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import { getCv } from "@/lib/cv";
+
+const cv = getCv("en");
+const { basics } = cv;
+const { image, label, name, summary, theme, url } = basics;
+---
+
+<Layout
+	title={`${name} - ${label}`}
+	description={summary}
+	image={image}
+	url={url}
+	theme={theme ?? "default"}
+	lang="en"
+>
+	<Controls />
+	<CVContent locale="en" />
+	<CVContent locale="vi" />
+</Layout>

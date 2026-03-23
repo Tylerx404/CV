@@ -1,0 +1,74 @@
+---
+import About from "@/components/sections/About.astro";
+import Certificates from "@/components/sections/Certificates.astro";
+import Education from "@/components/sections/Education.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Hero from "@/components/sections/Hero.astro";
+import PrintResume from "@/components/PrintResume.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Skills from "@/components/sections/Skills.astro";
+
+import { getCv } from "@/lib/cv";
+import { getMessages, type Locale } from "@/lib/i18n";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props as Props;
+const cv = getCv(locale);
+const ui = getMessages(locale);
+const { basics, certificates, education, projects, skills, work } = cv;
+const { summary } = basics;
+---
+
+<div data-locale-content={locale}>
+	<main class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:hidden">
+		<div class="space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
+			<Hero basics={basics} ui={ui} />
+			<About summary={summary} title={ui.sections.about} />
+			<Education education={education} title={ui.sections.education} presentLabel={ui.status.present} gpaLabel={ui.print.gpa} />
+			<Certificates certificates={certificates} title={ui.sections.certificates} />
+			<Skills className="print:hidden" skills={skills} title={ui.sections.skills} />
+		</div>
+		<div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
+			<Experience className="print:col-span-3" work={work} ui={ui} title={ui.sections.experience} />
+			<Projects
+				className="print:hidden"
+				projects={projects}
+				title={ui.sections.projects}
+				viewRepositoryLabel={ui.actions.viewRepository}
+				openLabel={ui.actions.openExternal}
+			/>
+		</div>
+	</main>
+	<PrintResume basics={basics} certificates={certificates} education={education} skills={skills} ui={ui} work={work} />
+</div>
+
+<style>
+	main {
+		margin: auto;
+		width: 100%;
+	}
+
+	@page {
+		size: A4;
+		margin: 0;
+	}
+
+	@media print {
+		html,
+		body {
+			background: #ffffff !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	}
+	:global(html[data-locale="en"] [data-locale-content="vi"]) {
+		display: none !important;
+	}
+
+	:global(html[data-locale="vi"] [data-locale-content="en"]) {
+		display: none !important;
+	}
+</style>

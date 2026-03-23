@@ -1,0 +1,139 @@
+<button
+	type="button"
+	class="inline-flex h-8 w-8 items-center justify-center text-skin-base transition-colors duration-200 hover:text-skin-hue focus:outline-none active:text-skin-hue"
+	data-theme-switch
+	data-theme-label-en="Theme"
+	data-theme-label-vi="Giao diện"
+	title="Theme"
+	aria-label="Theme"
+>
+	<svg
+		data-theme-icon="dark"
+		xmlns="http://www.w3.org/2000/svg"
+		width="20"
+		height="20"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+		style="display: none;"
+	>
+		<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+	</svg>
+	<svg
+		data-theme-icon="light"
+		xmlns="http://www.w3.org/2000/svg"
+		width="20"
+		height="20"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+		style="display: none;"
+	>
+		<circle cx="12" cy="12" r="4"></circle>
+		<path d="M12 2v2"></path>
+		<path d="M12 20v2"></path>
+		<path d="m4.93 4.93 1.41 1.41"></path>
+		<path d="m17.66 17.66 1.41 1.41"></path>
+		<path d="M2 12h2"></path>
+		<path d="M20 12h2"></path>
+		<path d="m6.34 17.66-1.41 1.41"></path>
+		<path d="m19.07 4.93-1.41 1.41"></path>
+	</svg>
+	<svg
+		data-theme-icon="system"
+		xmlns="http://www.w3.org/2000/svg"
+		width="20"
+		height="20"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		<path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"></path>
+		<path d="M10 19v-3.96 3.15"></path>
+		<path d="M7 19h5"></path>
+		<rect width="6" height="10" x="16" y="12" rx="2"></rect>
+	</svg>
+</button>
+
+<script>
+	const themeButtons = document.querySelectorAll("[data-theme-switch]");
+
+	themeButtons.forEach((button) => {
+		const icons = button.querySelectorAll("[data-theme-icon]");
+		const validModes = ["dark", "light", "system"];
+		let currentMode = "system";
+
+		const getThemeLabel = () =>
+			document.documentElement.getAttribute("data-locale") === "vi"
+				? button.getAttribute("data-theme-label-vi") || "Giao diện"
+				: button.getAttribute("data-theme-label-en") || "Theme";
+
+		const applyTheme = () => {
+			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			const resolvedTheme = currentMode === "system" ? systemTheme : currentMode;
+
+			document.documentElement.classList.remove("light", "dark");
+			document.documentElement.classList.add(resolvedTheme);
+
+			icons.forEach((icon) => {
+				if (icon.getAttribute("data-theme-icon") === currentMode) {
+					icon.setAttribute("style", "display: block;");
+				} else {
+					icon.setAttribute("style", "display: none;");
+				}
+			});
+
+			const label = getThemeLabel();
+			button.setAttribute("title", `${label}: ${currentMode}`);
+			button.setAttribute("aria-label", `${label}: ${currentMode}`);
+		};
+
+		const getCurrentMode = () => {
+			const savedTheme = localStorage.getItem("theme");
+			return validModes.includes(savedTheme || "") ? savedTheme || "system" : "system";
+		};
+
+		const nextTheme = () => {
+			if (currentMode === "dark") return "light";
+			if (currentMode === "light") return "system";
+			return "dark";
+		};
+
+		currentMode = getCurrentMode();
+		applyTheme();
+
+		button.addEventListener("click", () => {
+			currentMode = nextTheme();
+			localStorage.setItem("theme", currentMode);
+			applyTheme();
+		});
+
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+			if (currentMode === "system") {
+				applyTheme();
+			}
+		});
+
+		window.addEventListener("localechange", () => {
+			applyTheme();
+		});
+	});
+</script>
+
+<style>
+	:global(.dark) {
+		color-scheme: dark;
+	}
+</style>

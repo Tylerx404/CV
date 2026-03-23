@@ -1,0 +1,378 @@
+{
+  "cv": {
+    "basics": {
+      "name": "Đinh Vạn Tài",
+      "label": "Thực tập sinh Full Stack Developer",
+      "image": "/avatar.png",
+      "email": "vantaidinh04@gmail.com",
+      "phone": "+84 93 781 3612",
+      "url": "/",
+      "summary": "Tôi là ứng viên Intern Full Stack Developer yêu thích khám phá công nghệ mới và không ngừng học hỏi. Tôi mong muốn được phát triển kỹ năng front-end, back-end và tích lũy kinh nghiệm thực tế trong môi trường chuyên nghiệp.",
+      "theme": "default",
+      "location": {
+        "address": "9A/L3 Hà Thị Khiêm",
+        "postalCode": "71507",
+        "city": "TP. Hồ Chí Minh",
+        "countryCode": "VN",
+        "region": "Việt Nam"
+      },
+      "profiles": [
+        {
+          "network": "LinkedIn",
+          "username": "Đinh-Vạn-Tài",
+          "url": "https://linkedin.com/in/Đinh-Vạn-Tài"
+        },
+        {
+          "network": "X",
+          "username": "TylerDinh",
+          "url": "https://x.com/TylerDinh"
+        },
+        {
+          "network": "GitHub",
+          "username": "Tylerx404",
+          "url": "https://github.com/Tylerx404"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "Gung Wedding Planner",
+        "position": "Lập trình viên Web Fresher",
+        "location_type": "Freelancer",
+        "location": "TP. Hồ Chí Minh, Việt Nam",
+        "url": "https://gungweddingplanner.com",
+        "startDate": "2025-07-29",
+        "endDate": "2026-02-01",
+        "summary": "Phát triển và bảo trì nền tảng web lập kế hoạch cưới sử dụng React, TypeScript, TailwindCSS, Node/Express và MongoDB; phối hợp cùng nhóm để triển khai tính năng mới và sửa lỗi.",
+        "highlights": [
+          "Tôi phụ trách phần lớn backend và DevOps (thiết kế API, xử lý dữ liệu, triển khai Docker), đồng thời hỗ trợ một phần frontend với React, TypeScript và TailwindCSS khi cần."
+        ],
+        "responsibilities": [
+          "Thiết kế và bảo trì REST API cho xác thực, nội dung, liên hệ và tải tệp trong Node/Express.",
+          "Mô hình hóa schema MongoDB với Mongoose và áp dụng các quy tắc xác thực dữ liệu cùng bảo mật.",
+          "Xây dựng pipeline tải lên và xử lý hình ảnh với Multer, Sharp và tối ưu WebP.",
+          "Đóng gói dịch vụ bằng Docker/Docker Compose và quản lý cấu hình môi trường.",
+          "Hỗ trợ xây dựng component và trang frontend với React, TypeScript và TailwindCSS."
+        ],
+        "skills": [
+          "React",
+          "Node/Express",
+          "JavaScript",
+          "TypeScript",
+          "TailwindCSS",
+          "MongoDB"
+        ]
+      },
+      {
+        "name": "Tài API",
+        "position": "Nền tảng AI",
+        "location_type": "Dự án cá nhân",
+        "location": "TP. Hồ Chí Minh, Việt Nam",
+        "url": "https://newapi.ccfilm.online",
+        "startDate": "2025-01-01",
+        "endDate": null,
+        "summary": "Tự host và vận hành một AI API gateway dựa trên dự án mã nguồn mở QuantumNous/new-api để cung cấp truy cập mô hình ngôn ngữ lớn cho lập trình viên xây dựng sản phẩm có tích hợp AI.",
+        "highlights": [
+          "Sử dụng nền tảng này để cung cấp API LLM cho lập trình viên tích hợp vào ứng dụng riêng và các quy trình nội bộ."
+        ],
+        "responsibilities": [
+          "Triển khai và duy trì dịch vụ New API mã nguồn mở như một gateway tự host cho truy cập mô hình ngôn ngữ lớn.",
+          "Cung cấp quyền truy cập qua API tới các mô hình ngôn ngữ đã host để lập trình viên tích hợp khả năng AI vào sản phẩm và dự án phần mềm.",
+          "Vận hành dịch vụ như một hạ tầng thực tế cho thử nghiệm, tích hợp và phân phối tính năng AI."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Trường Đại học Công nghệ TP.HCM (HUTECH)",
+        "url": "https://www.hutech.edu.vn",
+        "area": "Kỹ sư phần mềm",
+        "studyType": "Cử nhân",
+        "startDate": "2022-01-01",
+        "endDate": "2026-01-01",
+        "score": "2.99/4.0",
+        "courses": []
+      }
+    ],
+    "certificates": [
+      {
+        "name": "IT Hackathon 2024 (Solana Customer Hack 16)",
+        "date": "2024-08-04",
+        "issuer": "Giải thưởng cuộc thi",
+        "url": "/IT-HACKATHON-2024.pdf"
+      }
+    ],
+    "skills": [
+      {
+        "name": "HTML",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend"
+        ]
+      },
+      {
+        "name": "CSS",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Responsive Design"
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Backend",
+          "Fullstack"
+        ]
+      },
+      {
+        "name": "React",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "JavaScript Library",
+          "UI"
+        ]
+      },
+      {
+        "name": "Next.js",
+        "level": "Beginner",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "React Framework",
+          "SSR",
+          "Static Generation"
+        ]
+      },
+      {
+        "name": "Tailwind",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "CSS Framework",
+          "Responsive Design"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Backend",
+          "JavaScript Superset"
+        ]
+      },
+      {
+        "name": "Node",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Backend",
+          "JavaScript",
+          "Server"
+        ]
+      },
+      {
+        "name": "MySQL",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "SQL",
+          "Data Storage",
+          "Backend"
+        ]
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "SQL",
+          "Relational Database",
+          "Backend"
+        ]
+      },
+      {
+        "name": "MongoDB",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "NoSQL",
+          "Document Database",
+          "Backend"
+        ]
+      },
+      {
+        "name": "Docker",
+        "level": "Intermediate",
+        "keywords": [
+          "DevOps",
+          "Containers",
+          "Deployment",
+          "Infrastructure"
+        ]
+      },
+      {
+        "name": "Git",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code"
+        ]
+      },
+      {
+        "name": "GitHub",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code",
+          "Git"
+        ]
+      },
+      {
+        "name": "Gitlab",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code"
+        ]
+      }
+    ],
+    "languages": [
+      {
+        "language": "Tiếng Anh",
+        "fluency": "Giao tiếp"
+      }
+    ],
+    "interests": [
+      {
+        "name": "Công nghệ",
+        "keywords": [
+          "AI",
+          "Blockchain"
+        ]
+      }
+    ],
+    "references": [],
+    "projects": [
+      {
+        "name": "CV",
+        "isActive": true,
+        "description": "Website CV cá nhân hiện tại của tôi, được xây dựng để trình bày hồ sơ, kinh nghiệm, dự án và thành tựu theo dạng một trang gọn gàng.",
+        "highlights": [
+          "Xây dựng với Astro và TailwindCSS, có layout responsive tối ưu cho cả xem trên web lẫn in CV.",
+          "Sử dụng dữ liệu CV có cấu trúc từ JSON để cập nhật nhanh kinh nghiệm, học vấn, giải thưởng và dự án tại một nơi."
+        ],
+        "url": "https://github.com/Tylerx404/CV",
+        "github": "https://github.com/Tylerx404/CV"
+      },
+      {
+        "name": "NewsFlow",
+        "isActive": true,
+        "description": "Dự án nhóm tập trung vào việc cá nhân hóa nguồn tin RSS cho những người cần cập nhật nhanh theo công việc và mối quan tâm của họ.",
+        "highlights": [
+          "Đề xuất ý tưởng sản phẩm và định hướng dự án xoay quanh cấu hình nguồn RSS cùng cơ chế phân phối nội dung cá nhân hóa.",
+          "Thiết kế để hỗ trợ nhà đầu tư, KOL và content creator theo dõi tín hiệu thị trường và tin nóng liên quan mà không phải đọc thủ công từng trang báo."
+        ],
+        "url": "https://github.com/Tylerx404/NewsFlow",
+        "github": "https://github.com/Tylerx404/NewsFlow"
+      },
+      {
+        "name": "e-hutech",
+        "isActive": true,
+        "description": "Dự án học tập cá nhân được xây dựng từ các thử nghiệm bắt gói HTTP trên ứng dụng e-hutech mobile để hiểu và tái sử dụng các API endpoint của HUTECH.",
+        "highlights": [
+          "Khám phá luồng request-response của API, cách xử lý dữ liệu và reverse engineer cách dùng endpoint cho mục tiêu học backend thực tế.",
+          "Sử dụng Python để xây dựng Telegram bot, đồng thời làm việc với PostgreSQL và Redis để quản lý, xử lý dữ liệu thu thập được."
+        ],
+        "url": "https://github.com/Tylerx404/e-hutech",
+        "github": "https://github.com/Tylerx404/e-hutech"
+      },
+      {
+        "name": "e-hutech-scios",
+        "isActive": true,
+        "description": "Dự án tiếp nối mở rộng phần nghiên cứu API trước đó sang iOS Shortcuts để tự động hóa các workflow liên quan tới e-hutech trên thiết bị di động.",
+        "highlights": [
+          "Chuyển hướng từ Telegram bot sang iOS Shortcuts để học shortcut action native và tư duy thiết kế automation ưu tiên mobile.",
+          "Được xây dựng như bước chuẩn bị thực hành cho việc phát triển ứng dụng iOS trong tương lai và tích hợp shortcut tăng năng suất quanh việc sử dụng app."
+        ],
+        "url": "https://github.com/Tylerx404/e-hutech-scios",
+        "github": "https://github.com/Tylerx404/e-hutech-scios"
+      }
+    ]
+  },
+  "messages": {
+    "sections": {
+      "about": "Giới thiệu",
+      "experience": "Kinh nghiệm",
+      "education": "Học vấn",
+      "certificates": "Chứng chỉ",
+      "skills": "Kỹ năng",
+      "projects": "Dự án"
+    },
+    "labels": {
+      "summary": "Tóm tắt",
+      "responsibilities": "Trách nhiệm",
+      "technologiesUsed": "Công nghệ sử dụng"
+    },
+    "actions": {
+      "copied": "Đã sao chép!",
+      "copyEmail": "Sao chép email",
+      "showMore": "Xem thêm",
+      "showLess": "Thu gọn",
+      "openExternal": "Mở {name}",
+      "viewRepository": "Xem repository trên GitHub",
+      "call": "Gọi cho {name} qua {phone}",
+      "visitProfile": "Xem {name} trên {network}"
+    },
+    "status": {
+      "present": "Hiện tại"
+    },
+    "print": {
+      "cv": "Sơ yếu lý lịch",
+      "personalDetails": "Thông tin cá nhân",
+      "name": "Họ và tên",
+      "address": "Địa chỉ",
+      "phone": "Số điện thoại",
+      "email": "Email",
+      "personalProfile": "Hồ sơ cá nhân",
+      "skills": "Kỹ năng",
+      "workExperience": "Kinh nghiệm làm việc",
+      "education": "Học vấn",
+      "certificates": "Chứng chỉ",
+      "gpa": "GPA",
+      "skillGroups": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "databases": "Cơ sở dữ liệu",
+        "tools": "Công cụ & Kiến thức"
+      },
+      "educationDegree": "{studyType} {area}"
+    },
+    "controls": {
+      "theme": "Giao diện: {label}",
+      "language": "Ngôn ngữ: {label}",
+      "languageNames": {
+        "en": "EN",
+        "vi": "VI"
+      },
+      "themeNames": {
+        "dark": "Tối",
+        "light": "Sáng",
+        "system": "Tự động"
+      }
+    }
+  }
+}

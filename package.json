@@ -1,0 +1,28 @@
+{
+  "name": "CV",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "pnpm run build && astro preview",
+    "build": "astro check && astro build"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.15.8",
+    "@astrojs/check": "0.9.8",
+    "alpinejs": "^3.15.8",
+    "astro": "6.0.8",
+    "astro-font-picker": "^0.2.2",
+    "hotkeypad": "1.0.2",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/alpinejs": "^3.13.11",
+    "playwright": "^1.58.2",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^4.2.2"
+  }
+}

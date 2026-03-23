@@ -1,0 +1,48 @@
+---
+import Section from "../Section.astro";
+import type { ResumeEducation } from "@/lib/cv";
+
+interface Props {
+	className?: string;
+	education: ResumeEducation;
+	title: string;
+	presentLabel: string;
+	gpaLabel?: string;
+}
+
+const { className, education, title, presentLabel, gpaLabel = "GPA" } = Astro.props as Props;
+---
+
+<Section className={className} title={title}>
+	<ul class="space-y-4 py-3 print:space-y-0">
+		{
+			education.map(({ institution, startDate, endDate, area, url, score }) => {
+				const startYear = new Date(startDate).getFullYear();
+				const endYear = endDate != null ? new Date(endDate).getFullYear() : presentLabel;
+				const years = `${startYear} - ${endYear}`;
+
+					return (
+						<div class="flex items-start">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden">
+								<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+								<path d="M22 10v6" />
+								<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+							</svg>
+							<div class="flex w-full flex-col gap-1 md:flex-row md:items-start md:justify-between md:gap-4">
+								<div class="min-w-0 md:pr-4">
+									<h3 class="font-medium">
+										<a target="_blank" class="hover:text-skin-hue group flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline" href={url}>
+											{institution}
+										</a>
+									</h3>
+									<div class="text-sm text-skin-muted">{area}</div>
+									{score && <div class="text-sm text-skin-muted">{gpaLabel}: {score}</div>}
+								</div>
+								<time class="shrink-0 text-xs text-skin-muted md:pt-0.5">{years}</time>
+							</div>
+						</div>
+					);
+			})
+		}
+	</ul>
+</Section>

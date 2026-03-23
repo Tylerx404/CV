@@ -1,0 +1,411 @@
+---
+import type {
+	ResumeBasics,
+	ResumeCertificates,
+	ResumeEducation,
+	ResumeSkills,
+	ResumeWork,
+} from "@/lib/cv";
+import type { Messages } from "@/lib/i18n";
+
+interface Props {
+	basics: ResumeBasics;
+	certificates: ResumeCertificates;
+	education: ResumeEducation;
+	skills: ResumeSkills;
+	ui: Messages;
+	work: ResumeWork;
+}
+
+const { basics, certificates, education, skills, ui, work } = Astro.props as Props;
+const { email, image, label, location, name, phone, summary } = basics;
+
+const subtitle = education[0]?.area ?? label;
+const printTitle = `${subtitle} - Full Stack Developer`;
+const address = [location.address, location.city, location.region].filter(Boolean).join(", ");
+
+const skillGroups = [
+	{
+		label: ui.print.skillGroups.frontend,
+		items: skills
+			.filter(({ name }) =>
+				["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind"].includes(name),
+			)
+			.map(({ name }) => name),
+	},
+	{
+		label: ui.print.skillGroups.backend,
+		items: skills.filter(({ name }) => ["Node", "Node.js"].includes(name)).map(({ name }) => name),
+	},
+	{
+		label: ui.print.skillGroups.databases,
+		items: skills
+			.filter(({ name }) => ["MySQL", "PostgreSQL", "MongoDB"].includes(name))
+			.map(({ name }) => name),
+	},
+	{
+		label: ui.print.skillGroups.tools,
+		items: skills.filter(({ name }) => ["Git", "GitHub", "Gitlab", "Docker"].includes(name)).map(({ name }) => name),
+	},
+].filter(({ items }) => items.length > 0);
+
+const formatYears = (startDate: string, endDate: string | null) => {
+	const startYear = new Date(startDate).getFullYear();
+	const endYear = endDate ? new Date(endDate).getFullYear() : ui.status.present;
+	return `${startYear} - ${endYear}`;
+};
+---
+
+<section class="print-resume hidden print:block">
+	<header class="resume-header">
+		<div class="resume-copy">
+			<p class="resume-kicker">{ui.print.cv}</p>
+			<p class="resume-subtitle">{printTitle}</p>
+
+			<div class="resume-section resume-section-first">
+				<h2>{ui.print.personalDetails}</h2>
+				<dl class="detail-list">
+					<div class="detail-row">
+						<dt>{ui.print.name}</dt>
+						<dd>{name}</dd>
+					</div>
+					{address && (
+						<div class="detail-row">
+							<dt>{ui.print.address}</dt>
+							<dd>{address}</dd>
+						</div>
+					)}
+					{phone && (
+						<div class="detail-row">
+							<dt>{ui.print.phone}</dt>
+							<dd>{phone}</dd>
+						</div>
+					)}
+					{email && (
+						<div class="detail-row">
+							<dt>{ui.print.email}</dt>
+							<dd>{email}</dd>
+						</div>
+					)}
+				</dl>
+			</div>
+		</div>
+
+		<figure class="resume-avatar">
+			<img src={image} alt={name} />
+		</figure>
+	</header>
+
+	<section class="resume-section">
+		<h2>{ui.print.personalProfile}</h2>
+		<p>{summary}</p>
+	</section>
+
+	{skillGroups.length > 0 && (
+		<section class="resume-section">
+			<h2>{ui.print.skills}</h2>
+			<ul class="skill-list">
+				{skillGroups.map(({ label, items }) => (
+					<li>
+						<strong>{label}:</strong> {items.join(", ")}
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
+
+	{work.length > 0 && (
+		<section class="resume-section">
+			<h2>{ui.print.workExperience}</h2>
+			<div class="experience-list">
+				{work.map(({name, position, startDate, endDate, summary, responsibilities, url }) => (
+					<article class="experience-item">
+						<span class="experience-bullet" aria-hidden="true">•</span>
+						<div class="experience-content">
+							<h3>
+								{position} -{" "}
+								{url ? (
+									<a href={url} target="_blank" rel="noreferrer">
+										{name}
+									</a>
+								) : (
+									name
+								)}
+							</h3>
+							<div class="experience-body">
+								<p class="experience-meta">{formatYears(startDate, endDate)}</p>
+								<p>{Array.isArray(summary) ? summary.join(" ") : summary}</p>
+								{responsibilities && responsibilities.length > 0 && (
+									<div class="experience-responsibilities">
+										{responsibilities.map((responsibility) => (
+											<p class="experience-responsibility">- {responsibility}</p>
+										))}
+									</div>
+								)}
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{education.length > 0 && (
+		<section class="resume-section">
+			<h2>{ui.print.education}</h2>
+			<div class="education-list">
+				{education.map(({ area, endDate, institution, score, startDate, studyType }) => (
+					<article>
+						<h3 class="education-degree">{ui.print.educationDegree(studyType, area)}</h3>
+						<p class="education-school">{institution}</p>
+						<p class="education-years">{formatYears(startDate, endDate)}</p>
+						{score && <p>{ui.print.gpa}: {score}</p>}
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{certificates.length > 0 && (
+		<section class="resume-section">
+			<h2>{ui.print.certificates}</h2>
+			<div class="certificate-list">
+				{certificates.map(({ date, issuer, name, url }) => (
+					<article class="certificate-item">
+						{url ? (
+							<a class="certificate-name" href={url} target="_blank" rel="noreferrer">
+								{name}
+							</a>
+						) : (
+							<p class="certificate-name">{name}</p>
+						)}
+						{(date || issuer) && (
+							<p class="certificate-meta">
+								{date && <em class="certificate-year">{new Date(date).getFullYear()}</em>}
+								{date && issuer && <span class="certificate-separator">-</span>}
+								{issuer && <span class="certificate-issuer">{issuer}</span>}
+							</p>
+						)}
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+</section>
+
+<style>
+	@media print {
+		.print-resume {
+			color: #2d2d2d;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10.5pt;
+			line-height: 1.23;
+			padding: 12mm;
+		}
+
+		.resume-header {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) 34mm;
+			gap: 10mm;
+			align-items: start;
+		}
+
+		.resume-kicker {
+			margin: 0;
+			font-size: 20pt;
+			font-weight: 700;
+			line-height: 1.1;
+			color: #3c3c3c;
+		}
+
+		.resume-subtitle {
+			margin: 2mm 0 0;
+			font-size: 10pt;
+			color: #7a7a7a;
+		}
+
+		.resume-avatar {
+			margin: 0;
+			width: 34mm;
+			justify-self: end;
+		}
+
+		.resume-avatar img {
+			display: block;
+			width: 100%;
+			aspect-ratio: 3 / 4;
+			border: 1px solid #d9d9d9;
+			border-radius: 2mm;
+			object-fit: cover;
+		}
+
+		.resume-section {
+			border-top: 1px solid #dddddd;
+			padding-top: 3mm;
+			margin-top: 3mm;
+		}
+
+		.resume-section-first {
+			border-top: none;
+			padding-top: 3.6mm;
+			margin-top: 0;
+		}
+
+		.resume-section h2 {
+			margin: 0 0 2mm;
+			font-size: 12pt;
+			font-weight: 700;
+			color: #444444;
+		}
+
+		.resume-section h3 {
+			margin: 0;
+			font-size: 11pt;
+			font-weight: 700;
+			color: #333333;
+		}
+
+		.resume-section p,
+		.resume-section li,
+		.resume-section dd,
+		.resume-section dt {
+			margin: 0;
+			font-size: 10.5pt;
+			line-height: 1.23;
+			color: #4f4f4f;
+		}
+
+		.detail-list {
+			display: grid;
+			gap: 1mm;
+		}
+
+		.detail-row {
+			display: flex;
+			align-items: flex-start;
+			gap: 3mm;
+		}
+
+		.detail-row dt {
+			width: 24mm;
+			flex: 0 0 24mm;
+			font-weight: 700;
+			color: #4b4b4b;
+			text-align: right;
+		}
+
+		.detail-row dd {
+			flex: 1;
+			min-width: 0;
+			justify-self: start;
+			text-align: left;
+		}
+
+		.skill-list,
+		.certificate-list {
+			display: grid;
+			gap: 1.3mm;
+		}
+
+		.certificate-item {
+			display: block;
+		}
+
+		.certificate-item > * + * {
+			margin-top: 0.45mm;
+		}
+
+		.certificate-name {
+			display: block;
+			font-weight: 600;
+			color: #333333;
+			text-decoration: none;
+		}
+
+		.certificate-meta {
+			display: block;
+			color: #555555;
+			white-space: nowrap;
+		}
+
+		.certificate-year {
+			font-style: italic !important;
+		}
+
+		.certificate-separator,
+		.certificate-issuer {
+			color: #555555;
+		}
+
+		.experience-list {
+			display: grid;
+			gap: 1.3mm;
+		}
+
+		.experience-list > .experience-item + .experience-item {
+			margin-top: 1.9mm;
+		}
+
+		.experience-item {
+			display: grid;
+			grid-template-columns: auto minmax(0, 1fr);
+			column-gap: 2mm;
+			align-items: start;
+		}
+
+		.experience-bullet {
+			line-height: 1.2;
+			color: #333333;
+		}
+
+		.experience-content {
+			min-width: 0;
+		}
+
+		.experience-body {
+			margin-top: 0.5mm;
+		}
+
+		.experience-responsibilities {
+			display: grid;
+			gap: 0.35mm;
+			margin-top: 0.5mm;
+		}
+
+		.experience-responsibility {
+			padding-left: 0;
+		}
+
+		.experience-meta {
+			font-style: italic;
+			color: #666666;
+		}
+
+		.experience-location,
+		.education-degree {
+			font-weight: 600;
+			color: #555555;
+		}
+
+		.education-school {
+			font-weight: 400;
+			color: #555555;
+		}
+
+		.education-years {
+			font-style: italic;
+		}
+
+		.education-list {
+			display: grid;
+			gap: 1.3mm;
+		}
+
+		.print-resume a {
+			color: #000000;
+			text-decoration: underline;
+			text-underline-offset: 1.5px;
+			word-break: break-word;
+		}
+	}
+</style>

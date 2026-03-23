@@ -1,0 +1,387 @@
+{
+  "cv": {
+    "basics": {
+      "name": "Dinh Van Tai",
+      "label": "Intern Full Stack Developer",
+      "image": "/avatar.png",
+      "email": "vantaidinh04@gmail.com",
+      "phone": "+84 93 781 3612",
+      "url": "/",
+      "summary": "I am an aspiring Full Stack Developer Intern who enjoys exploring new technologies and continuously learning. I am seeking an opportunity to strengthen my front-end and back-end skills while gaining hands-on experience in a professional environment.",
+      "theme": "default",
+      "location": {
+        "address": "9A/L3 Ha Thi Khiem",
+        "postalCode": "71507",
+        "city": "Ho Chi Minh City",
+        "countryCode": "VN",
+        "region": "Vietnam"
+      },
+      "profiles": [
+        {
+          "network": "LinkedIn",
+          "username": "Đinh-Vạn-Tài",
+          "url": "https://linkedin.com/in/Đinh-Vạn-Tài"
+        },
+        {
+          "network": "X",
+          "username": "TylerDinh",
+          "url": "https://x.com/TylerDinh"
+        },
+        {
+          "network": "GitHub",
+          "username": "Tylerx404",
+          "url": "https://github.com/Tylerx404"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "Gung Wedding Planner",
+        "position": "Fresher Web Developer",
+        "location_type": "Freelancer",
+        "location": "Ho Chi Minh City, Vietnam",
+        "url": "https://gungweddingplanner.com",
+        "startDate": "2025-07-29",
+        "endDate": "2026-02-01",
+        "summary": "Developed and maintained a wedding planning web platform using React, TypeScript, TailwindCSS, Node/Express, and MongoDB; collaborated with the team to deliver new features and fix bugs.",
+        "highlights": [
+          "I handled most of the backend and DevOps work (API design, data handling, Docker deployment), and supported some frontend tasks with React, TypeScript, and TailwindCSS when needed."
+        ],
+        "responsibilities": [
+          "Designed and maintained REST APIs for authentication, content, contacts, and file uploads in Node/Express.",
+          "Modeled MongoDB schemas with Mongoose and enforced data validation and security rules.",
+          "Built the image upload and processing pipeline (Multer, Sharp, WebP optimization).",
+          "Containerized services with Docker/Docker Compose and managed environment configuration.",
+          "Assisted with frontend components and pages using React, TypeScript, and TailwindCSS."
+        ],
+        "skills": [
+          "React",
+          "Node/Express",
+          "JavaScript",
+          "TypeScript",
+          "TailwindCSS",
+          "MongoDB"
+        ]
+      },
+      {
+        "name": "Tài API",
+        "position": "AI Platform",
+        "location_type": "Personal Project",
+        "location": "Ho Chi Minh City, Vietnam",
+        "url": "https://newapi.ccfilm.online",
+        "startDate": "2025-01-01",
+        "endDate": null,
+        "summary": "Self-hosted and operated an AI API gateway based on the open-source QuantumNous/new-api project to provide large language model access for developers building AI-enabled products.",
+        "highlights": [
+          "Used the platform to expose LLM APIs that developers can integrate into their own applications and internal project workflows."
+        ],
+        "responsibilities": [
+          "Deployed and maintained the open-source New API service as a self-hosted gateway for large language model access.",
+          "Provided API-based access to hosted language models so developers could integrate AI capabilities into products and software projects.",
+          "Managed the service as practical infrastructure for experimentation, integration, and AI feature delivery."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "HUTECH University of Technology",
+        "url": "https://www.hutech.edu.vn",
+        "area": "Software Engineer",
+        "studyType": "Bachelor",
+        "startDate": "2022-01-01",
+        "endDate": "2026-01-01",
+        "score": "2.99/4.0",
+        "courses": []
+      }
+    ],
+    "certificates": [
+      {
+        "name": "IT Hackathon 2024 (Solana Customer Hack 16)",
+        "date": "2024-08-04",
+        "issuer": "Competition Award",
+        "url": "/IT-HACKATHON-2024.pdf"
+      }
+    ],
+    "skills": [
+      {
+        "name": "HTML",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend"
+        ]
+      },
+      {
+        "name": "CSS",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Responsive Design"
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Backend",
+          "Fullstack"
+        ]
+      },
+      {
+        "name": "React",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "JavaScript Library",
+          "UI"
+        ]
+      },
+      {
+        "name": "Next.js",
+        "level": "Beginner",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "React Framework",
+          "SSR",
+          "Static Generation"
+        ]
+      },
+      {
+        "name": "Tailwind",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "CSS Framework",
+          "Responsive Design"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Frontend",
+          "Backend",
+          "JavaScript Superset"
+        ]
+      },
+      {
+        "name": "Node",
+        "level": "Intermediate",
+        "keywords": [
+          "Web Development",
+          "Backend",
+          "JavaScript",
+          "Server"
+        ]
+      },
+      {
+        "name": "MySQL",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "SQL",
+          "Data Storage",
+          "Backend"
+        ]
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "SQL",
+          "Relational Database",
+          "Backend"
+        ]
+      },
+      {
+        "name": "MongoDB",
+        "level": "Intermediate",
+        "keywords": [
+          "Databases",
+          "NoSQL",
+          "Document Database",
+          "Backend"
+        ]
+      },
+      {
+        "name": "Docker",
+        "level": "Intermediate",
+        "keywords": [
+          "DevOps",
+          "Containers",
+          "Deployment",
+          "Infrastructure"
+        ]
+      },
+      {
+        "name": "Git",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code"
+        ]
+      },
+      {
+        "name": "GitHub",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code",
+          "Git"
+        ]
+      },
+      {
+        "name": "Gitlab",
+        "level": "Intermediate",
+        "keywords": [
+          "Version Control",
+          "Collaboration",
+          "Source Code"
+        ]
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Native speaker"
+      },
+      {
+        "language": "Spanish",
+        "fluency": "Intermediate"
+      }
+    ],
+    "interests": [
+      {
+        "name": "Technology",
+        "keywords": [
+          "AI",
+          "Blockchain"
+        ]
+      }
+    ],
+    "references": [
+      {
+        "name": "Jane Smith",
+        "reference": "Reference…"
+      }
+    ],
+    "projects": [
+      {
+        "name": "CV",
+        "isActive": true,
+        "description": "My current personal CV website, built to present my profile, experience, projects, and achievements in a clean single-page format.",
+        "highlights": [
+          "Built with Astro and TailwindCSS, with a responsive layout optimized for both web viewing and printable CV output.",
+          "Uses structured CV data from JSON so content like experience, education, awards, and projects can be updated quickly in one place."
+        ],
+        "url": "https://github.com/Tylerx404/CV",
+        "github": "https://github.com/Tylerx404/CV"
+      },
+      {
+        "name": "NewsFlow",
+        "isActive": true,
+        "description": "A team project focused on personalized RSS-based news curation for people who need fast updates tailored to their work and interests.",
+        "highlights": [
+          "Proposed the product idea and led the project direction around RSS source configuration and personalized content delivery.",
+          "Designed to help investors, KOLs, and content creators track relevant market and breaking-news signals without reading every news site manually."
+        ],
+        "url": "https://github.com/Tylerx404/NewsFlow",
+        "github": "https://github.com/Tylerx404/NewsFlow"
+      },
+      {
+        "name": "e-hutech",
+        "isActive": true,
+        "description": "A personal learning project built from HTTP capture experiments on the e-hutech mobile app to understand and reuse HUTECH API endpoints.",
+        "highlights": [
+          "Explored API request-response flows, data processing patterns, and reverse-engineered endpoint usage for practical backend learning.",
+          "Used Python to build a Telegram bot and worked with PostgreSQL and Redis to manage and process collected data."
+        ],
+        "url": "https://github.com/Tylerx404/e-hutech",
+        "github": "https://github.com/Tylerx404/e-hutech"
+      },
+      {
+        "name": "e-hutech-scios",
+        "isActive": true,
+        "description": "A follow-up project that extends the earlier API research into iOS Shortcuts to automate e-hutech-related workflows on mobile.",
+        "highlights": [
+          "Shifted the delivery approach from a Telegram bot to iOS Shortcuts to learn native shortcut actions and mobile-first automation design.",
+          "Built as hands-on preparation for future iOS application development and for integrating productivity shortcuts around app usage."
+        ],
+        "url": "https://github.com/Tylerx404/e-hutech-scios",
+        "github": "https://github.com/Tylerx404/e-hutech-scios"
+      }
+    ]
+  },
+  "messages": {
+    "sections": {
+      "about": "About",
+      "experience": "Experience",
+      "education": "Education",
+      "certificates": "Certificates",
+      "skills": "Skills",
+      "projects": "Projects"
+    },
+    "labels": {
+      "summary": "Summary",
+      "responsibilities": "Responsibilities",
+      "technologiesUsed": "Technologies used"
+    },
+    "actions": {
+      "copied": "Copied!",
+      "copyEmail": "Copy email",
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "openExternal": "Open {name}",
+      "viewRepository": "View repository on GitHub",
+      "call": "Call {name} at {phone}",
+      "visitProfile": "Visit {name} on {network}"
+    },
+    "status": {
+      "present": "Present"
+    },
+    "print": {
+      "cv": "Curriculum Vitae",
+      "personalDetails": "Personal Details",
+      "name": "Name",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "personalProfile": "Personal Profile",
+      "skills": "Skills",
+      "workExperience": "Work Experience",
+      "education": "Education",
+      "certificates": "Certificates",
+      "gpa": "GPA",
+      "skillGroups": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "databases": "Databases",
+        "tools": "Tools & Concepts"
+      },
+      "educationDegree": "{studyType} of {area}"
+    },
+    "controls": {
+      "theme": "Theme: {label}",
+      "language": "Language: {label}",
+      "languageNames": {
+        "en": "EN",
+        "vi": "VI"
+      },
+      "themeNames": {
+        "dark": "Dark",
+        "light": "Light",
+        "system": "Auto"
+      }
+    }
+  }
+}
