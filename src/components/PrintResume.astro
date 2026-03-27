@@ -35,7 +35,9 @@ const skillGroups = [
 	},
 	{
 		label: ui.print.skillGroups.backend,
-		items: skills.filter(({ name }) => ["Node", "Node.js"].includes(name)).map(({ name }) => name),
+		items: skills
+			.filter(({ name }) => ["Node", "Node.js", ".NET", "Spring Boot"].includes(name))
+			.map(({ name }) => name),
 	},
 	{
 		label: ui.print.skillGroups.databases,

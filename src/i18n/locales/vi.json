@@ -182,6 +182,26 @@
         ]
       },
       {
+        "name": ".NET",
+        "level": "Beginner",
+        "keywords": [
+          "Web Development",
+          "Backend",
+          "C#",
+          "API Development"
+        ]
+      },
+      {
+        "name": "Spring Boot",
+        "level": "Beginner",
+        "keywords": [
+          "Web Development",
+          "Backend",
+          "Java",
+          "API Development"
+        ]
+      },
+      {
         "name": "MySQL",
         "level": "Intermediate",
         "keywords": [
