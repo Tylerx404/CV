@@ -60,7 +60,8 @@
           "JavaScript",
           "TypeScript",
           "TailwindCSS",
-          "MongoDB"
+          "MongoDB",
+          "Docker"
         ]
       },
       {
