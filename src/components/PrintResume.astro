@@ -3,6 +3,7 @@ import type {
 	ResumeBasics,
 	ResumeCertificates,
 	ResumeEducation,
+	ResumeProjects,
 	ResumeSkills,
 	ResumeWork,
 } from "@/lib/cv";
@@ -12,12 +13,13 @@ interface Props {
 	basics: ResumeBasics;
 	certificates: ResumeCertificates;
 	education: ResumeEducation;
+	projects: ResumeProjects;
 	skills: ResumeSkills;
 	ui: Messages;
 	work: ResumeWork;
 }
 
-const { basics, certificates, education, skills, ui, work } = Astro.props as Props;
+const { basics, certificates, education, projects, skills, ui, work } = Astro.props as Props;
 const { email, image, label, location, name, phone, summary } = basics;
 
 const subtitle = education[0]?.area ?? label;
@@ -56,6 +58,12 @@ const formatYears = (startDate: string, endDate: string | null) => {
 	const endYear = endDate ? new Date(endDate).getFullYear() : ui.status.present;
 	return `${startYear} - ${endYear}`;
 };
+
+const printWork = work.filter(({ name }) => name !== "Tài API");
+
+const printProjects = ["NewsFlow", "e-hutech"]
+	.map((projectName) => projects.find(({ name }) => name === projectName))
+	.filter((project): project is ResumeProjects[number] => Boolean(project));
 ---
 
 <section class="print-resume hidden print:block">
@@ -116,11 +124,11 @@ const formatYears = (startDate: string, endDate: string | null) => {
 		</section>
 	)}
 
-	{work.length > 0 && (
+	{printWork.length > 0 && (
 		<section class="resume-section">
 			<h2>{ui.print.workExperience}</h2>
 			<div class="experience-list">
-				{work.map(({name, position, startDate, endDate, summary, responsibilities, url }) => (
+				{printWork.map(({name, position, startDate, endDate, summary, responsibilities, url }) => (
 					<article class="experience-item">
 						<span class="experience-bullet" aria-hidden="true">•</span>
 						<div class="experience-content">
@@ -152,46 +160,83 @@ const formatYears = (startDate: string, endDate: string | null) => {
 		</section>
 	)}
 
-	{education.length > 0 && (
+	{printProjects.length > 0 && (
 		<section class="resume-section">
-			<h2>{ui.print.education}</h2>
-			<div class="education-list">
-				{education.map(({ area, endDate, institution, score, startDate, studyType }) => (
-					<article>
-						<h3 class="education-degree">{ui.print.educationDegree(studyType, area)}</h3>
-						<p class="education-school">{institution}</p>
-						<p class="education-years">{formatYears(startDate, endDate)}</p>
-						{score && <p>{ui.print.gpa}: {score}</p>}
+			<h2>{ui.print.projects}</h2>
+			<div class="print-projects">
+				{printProjects.map(({ description, github, highlights, name, url }) => (
+					<article class="print-project">
+						<h3>
+							{url ? (
+								<a href={url} target="_blank" rel="noreferrer">
+									{name}
+								</a>
+							) : github ? (
+								<a href={github} target="_blank" rel="noreferrer">
+									{name}
+								</a>
+							) : (
+								name
+							)}
+						</h3>
+						<p class="print-project-description">{description}</p>
+						{highlights.length > 0 && (
+							<ul class="print-project-highlights">
+								{highlights.map((highlight) => (
+									<li>{highlight}</li>
+								))}
+							</ul>
+						)}
 					</article>
 				))}
 			</div>
 		</section>
 	)}
 
-	{certificates.length > 0 && (
-		<section class="resume-section">
-			<h2>{ui.print.certificates}</h2>
-			<div class="certificate-list">
-				{certificates.map(({ date, issuer, name, url }) => (
-					<article class="certificate-item">
-						{url ? (
-							<a class="certificate-name" href={url} target="_blank" rel="noreferrer">
-								{name}
-							</a>
-						) : (
-							<p class="certificate-name">{name}</p>
-						)}
-						{(date || issuer) && (
-							<p class="certificate-meta">
-								{date && <em class="certificate-year">{new Date(date).getFullYear()}</em>}
-								{date && issuer && <span class="certificate-separator">-</span>}
-								{issuer && <span class="certificate-issuer">{issuer}</span>}
-							</p>
-						)}
-					</article>
-				))}
-			</div>
-		</section>
+	{(education.length > 0 || certificates.length > 0) && (
+		<div class="resume-section-columns">
+			{education.length > 0 && (
+				<section class="resume-section resume-section-column">
+					<h2>{ui.print.education}</h2>
+					<div class="education-list">
+						{education.map(({ area, endDate, institution, score, startDate, studyType }) => (
+							<article>
+								<h3 class="education-degree">{ui.print.educationDegree(studyType, area)}</h3>
+								<p class="education-school">{institution}</p>
+								<p class="education-years">{formatYears(startDate, endDate)}</p>
+								{score && <p>{ui.print.gpa}: {score}</p>}
+							</article>
+						))}
+					</div>
+				</section>
+			)}
+
+			{certificates.length > 0 && (
+				<section class="resume-section resume-section-column">
+					<h2>{ui.print.certificates}</h2>
+					<div class="certificate-list">
+						{certificates.map(({ date, issuer, name, url }) => (
+							<article class="certificate-item">
+								{url ? (
+									<a class="certificate-name" href={url} target="_blank" rel="noreferrer">
+										{name}
+									</a>
+								) : (
+									<p class="certificate-name">{name}</p>
+								)}
+								{(date || issuer) && (
+									<p class="certificate-meta">
+										{date && <em class="certificate-year">{new Date(date).getFullYear()}</em>}
+										{date && issuer && <span class="certificate-separator">-</span>}
+										{issuer && <span class="certificate-issuer">{issuer}</span>}
+									</p>
+								)}
+							</article>
+						))}
+					</div>
+				</section>
+			)}
+		</div>
 	)}
 </section>
 
@@ -201,7 +246,7 @@ const formatYears = (startDate: string, endDate: string | null) => {
 			color: #2d2d2d;
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 10.5pt;
-			line-height: 1.23;
+			line-height: 1.28;
 			padding: 12mm;
 		}
 
@@ -221,7 +266,6 @@ const formatYears = (startDate: string, endDate: string | null) => {
 		}
 
 		.resume-subtitle {
-			margin: 2mm 0 0;
 			font-size: 10pt;
 			color: #7a7a7a;
 		}
@@ -253,6 +297,39 @@ const formatYears = (startDate: string, endDate: string | null) => {
 			margin-top: 0;
 		}
 
+		.resume-section-columns {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 4mm;
+			align-items: start;
+			border-top: 1px solid #dddddd;
+			padding-top: 3mm;
+			margin-top: 3mm;
+		}
+
+		.resume-section-column {
+			flex: 1 1 0;
+			min-width: 0;
+			margin-top: 0;
+			border-top: none;
+			padding-top: 0;
+		}
+
+		.resume-section-column + .resume-section-column {
+			position: relative;
+			padding-left: 3mm;
+		}
+
+		.resume-section-column + .resume-section-column::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 5mm;
+			bottom: 0;
+			width: 1px;
+			background: #dddddd;
+		}
+
 		.resume-section h2 {
 			margin: 0 0 2mm;
 			font-size: 12pt;
@@ -273,7 +350,7 @@ const formatYears = (startDate: string, endDate: string | null) => {
 		.resume-section dt {
 			margin: 0;
 			font-size: 10.5pt;
-			line-height: 1.23;
+			line-height: 1.28;
 			color: #4f4f4f;
 		}
 
@@ -387,6 +464,37 @@ const formatYears = (startDate: string, endDate: string | null) => {
 		.education-degree {
 			font-weight: 600;
 			color: #555555;
+		}
+
+		.print-projects {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 4mm;
+		}
+
+		.print-project {
+			flex: 1 1 0;
+			min-width: 0;
+		}
+
+		.print-project + .print-project {
+			border-left: 1px solid #dddddd;
+			padding-left: 3mm;
+		}
+
+		.print-project > * + * {
+			margin-top: 0.75mm;
+		}
+
+		.print-project-description {
+			color: #4f4f4f;
+		}
+
+		.print-project-highlights {
+			margin: 0;
+			padding-left: 4mm;
+			display: grid;
+			gap: 0.6mm;
 		}
 
 		.education-school {

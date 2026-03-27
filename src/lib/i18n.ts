@@ -41,6 +41,7 @@ export interface RawMessages {
 		personalProfile: string;
 		skills: string;
 		workExperience: string;
+		projects: string;
 		education: string;
 		certificates: string;
 		gpa: string;
