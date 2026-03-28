@@ -14,6 +14,7 @@ export interface ResumeData {
 		theme?: string;
 		location: {
 			address: string;
+			ward: string;
 			postalCode: string;
 			city: string;
 			countryCode: string;
