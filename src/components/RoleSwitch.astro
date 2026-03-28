@@ -24,11 +24,10 @@
 	const syncHead = () => {
 		const activeLocale = document.documentElement.getAttribute("data-locale") === "vi" ? "vi" : "en";
 		const activeContent = document.querySelector(`[data-locale-content="${activeLocale}"]`);
-		const name = activeContent?.querySelector("[data-person-name]")?.textContent?.trim();
 		const label = activeContent?.querySelector("[data-role-label]")?.textContent?.trim();
 		const summary = activeContent?.querySelector("[data-role-summary]")?.textContent?.trim();
-
-		const pageTitle = name && label ? `${name} - ${label}` : "";
+		const localePrefix = `[${activeLocale.toUpperCase()}]`;
+		const pageTitle = label ? `${localePrefix} ${label}` : "";
 
 		if (pageTitle) {
 			document.title = pageTitle;

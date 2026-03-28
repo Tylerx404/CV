@@ -7,11 +7,11 @@ import { getCv } from "@/lib/cv";
 
 const cv = getCv("en");
 const { basics } = cv;
-const { image, label, name, summary, theme, url } = basics;
+const { image, label, summary, theme, url } = basics;
 ---
 
 <Layout
-	title={`${name} - ${label}`}
+	title={`[EN] ${label}`}
 	description={summary}
 	image={image}
 	url={url}
