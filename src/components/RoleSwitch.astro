@@ -1,0 +1,131 @@
+<div class="role-switch" data-role-switch data-label-en="Role" data-label-vi="Vị trí">
+	<button type="button" class="role-chip" data-role-button data-role-value="fullstack" aria-pressed="true">
+		Full Stack
+	</button>
+	<button type="button" class="role-chip" data-role-button data-role-value="frontend" aria-pressed="false">
+		Frontend
+	</button>
+	<button type="button" class="role-chip" data-role-button data-role-value="backend" aria-pressed="false">
+		Backend
+	</button>
+</div>
+
+<script>
+	const validRoles = ["fullstack", "frontend", "backend"];
+	const roleSwitches = document.querySelectorAll("[data-role-switch]");
+
+	const getActiveRole = () => {
+		const savedRole = localStorage.getItem("role");
+		return validRoles.includes(savedRole || "") ? savedRole || "fullstack" : "fullstack";
+	};
+
+	let activeRole = getActiveRole();
+
+	const syncHead = () => {
+		const activeLocale = document.documentElement.getAttribute("data-locale") === "vi" ? "vi" : "en";
+		const activeContent = document.querySelector(`[data-locale-content="${activeLocale}"]`);
+		const name = activeContent?.querySelector("[data-person-name]")?.textContent?.trim();
+		const label = activeContent?.querySelector("[data-role-label]")?.textContent?.trim();
+		const summary = activeContent?.querySelector("[data-role-summary]")?.textContent?.trim();
+
+		const pageTitle = name && label ? `${name} - ${label}` : "";
+
+		if (pageTitle) {
+			document.title = pageTitle;
+		}
+
+		if (summary) {
+			document
+				.querySelectorAll('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]')
+				.forEach((meta) => meta.setAttribute("content", summary));
+		}
+
+		if (pageTitle) {
+			document
+				.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]')
+				.forEach((meta) => meta.setAttribute("content", pageTitle));
+		}
+	};
+
+	const syncRoleState = () => {
+		document.documentElement.setAttribute("data-role", activeRole);
+		localStorage.setItem("role", activeRole);
+
+		document.querySelectorAll("[data-role-content]").forEach((element) => {
+			const nextValue = element.getAttribute(`data-role-${activeRole}`);
+			if (nextValue !== null) {
+				element.textContent = nextValue;
+			}
+		});
+
+		roleSwitches.forEach((switchElement) => {
+			const groupLabel =
+				document.documentElement.getAttribute("data-locale") === "vi"
+					? switchElement.getAttribute("data-label-vi") || "Vị trí"
+					: switchElement.getAttribute("data-label-en") || "Role";
+
+			switchElement.querySelectorAll("[data-role-button]").forEach((button) => {
+				const isActive = button.getAttribute("data-role-value") === activeRole;
+				const label = button.textContent?.trim() || "";
+
+				button.setAttribute("aria-pressed", String(isActive));
+				button.setAttribute("data-active", String(isActive));
+				button.setAttribute("title", `${groupLabel}: ${label}`);
+				button.setAttribute("aria-label", `${groupLabel}: ${label}`);
+			});
+		});
+
+		syncHead();
+		window.dispatchEvent(new CustomEvent("rolechange", { detail: { role: activeRole } }));
+	};
+
+	syncRoleState();
+
+	roleSwitches.forEach((switchElement) => {
+		switchElement.querySelectorAll("[data-role-button]").forEach((button) => {
+			button.addEventListener("click", () => {
+				activeRole = button.getAttribute("data-role-value") || "fullstack";
+				syncRoleState();
+			});
+		});
+	});
+
+	window.addEventListener("localechange", () => {
+		syncRoleState();
+	});
+</script>
+
+<style>
+	.role-switch {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 0.25rem;
+		border: 1px solid color-mix(in srgb, var(--color-text-muted) 16%, transparent);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-fill) 88%, transparent);
+		backdrop-filter: blur(8px);
+	}
+
+	.role-chip {
+		border: 0;
+		background: transparent;
+		color: var(--color-text-muted);
+		border-radius: 999px;
+		padding: 0.4rem 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background-color 200ms ease, color 200ms ease;
+	}
+
+	.role-chip:hover {
+		color: var(--color-text-base);
+	}
+
+	.role-chip[data-active="true"] {
+		background: var(--color-button-accent-hover);
+		color: var(--color-fill);
+	}
+</style>

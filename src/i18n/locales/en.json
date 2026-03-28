@@ -2,12 +2,26 @@
   "cv": {
     "basics": {
       "name": "Dinh Van Tai",
-      "label": "Intern Full Stack Developer",
+      "label": "Full Stack Developer Intern",
       "image": "/avatar.png",
       "email": "vantaidinh04@gmail.com",
       "phone": "+84 93 781 3612",
       "url": "/",
-      "summary": "I am an aspiring Full Stack Developer Intern who enjoys exploring new technologies and continuously learning. I am seeking an opportunity to strengthen my front-end and back-end skills while gaining hands-on experience in a professional environment.",
+      "summary": "I am seeking a Full Stack Developer Intern role with a working foundation in both frontend and backend web development. I have built and maintained features with React, TypeScript, Node/Express, MongoDB, and Docker in real projects, and I want to keep growing toward delivering complete web products from interface to server-side systems.",
+      "roleProfiles": {
+        "fullstack": {
+          "label": "Full Stack Developer Intern",
+          "summary": "I am seeking a Full Stack Developer Intern role with a working foundation in both frontend and backend web development. I have built and maintained features with React, TypeScript, Node/Express, MongoDB, and Docker in real projects, and I want to keep growing toward delivering complete web products from interface to server-side systems."
+        },
+        "frontend": {
+          "label": "Frontend Developer Intern",
+          "summary": "I am seeking a Frontend Developer Intern role, focused on building clear, responsive, and maintainable web interfaces with React, TypeScript, and TailwindCSS. I have hands-on experience implementing screens, components, and API integrations in project work, and I want to further strengthen my UI implementation, state handling, and user experience skills."
+        },
+        "backend": {
+          "label": "Backend Developer Intern",
+          "summary": "I am seeking a Backend Developer Intern role, focused on API design, data processing, and service operation with Node/Express, MongoDB, and Docker. I have hands-on experience building features such as authentication, file uploads, content management, and deployment workflows, and I want to deepen my skills in backend architecture, security, and performance."
+        }
+      },
       "theme": "default",
       "location": {
         "address": "9A/L3 Ha Thi Khiem",

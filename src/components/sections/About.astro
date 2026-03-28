@@ -1,16 +1,29 @@
 ---
+import type { ResumeBasics } from "@/lib/cv";
 import Section from "../Section.astro";
 
 interface Props {
-	summary: string;
+	basics: ResumeBasics;
 	title: string;
 }
 
-const { summary, title } = Astro.props as Props;
+const { basics, title } = Astro.props as Props;
+const { label, summary, roleProfiles } = basics;
+const profiles = roleProfiles ?? {
+	fullstack: { label, summary },
+	frontend: { label, summary },
+	backend: { label, summary },
+};
 ---
 
 <Section title={title}>
-	<p>
+	<p
+		data-role-content
+		data-role-fullstack={profiles.fullstack.summary}
+		data-role-frontend={profiles.frontend.summary}
+		data-role-backend={profiles.backend.summary}
+		data-role-summary
+	>
 		{summary}
 	</p>
 </Section>

@@ -22,8 +22,11 @@ interface Props {
 const { basics, certificates, education, projects, skills, ui, work } = Astro.props as Props;
 const { email, image, label, location, name, phone, summary } = basics;
 
-const subtitle = education[0]?.area ?? label;
-const printTitle = `${subtitle} - Full Stack Developer`;
+const roleProfiles = basics.roleProfiles ?? {
+	fullstack: { label: basics.label, summary: basics.summary },
+	frontend: { label: basics.label, summary: basics.summary },
+	backend: { label: basics.label, summary: basics.summary },
+};
 const address = [location.ward, location.city].filter(Boolean).join(", ");
 
 const skillGroups = [
@@ -70,7 +73,15 @@ const printProjects = ["NewsFlow", "e-hutech"]
 	<header class="resume-header">
 		<div class="resume-copy">
 			<p class="resume-kicker">{ui.print.cv}</p>
-			<p class="resume-subtitle">{printTitle}</p>
+			<p
+				class="resume-subtitle"
+				data-role-content
+				data-role-fullstack={roleProfiles.fullstack.label}
+				data-role-frontend={roleProfiles.frontend.label}
+				data-role-backend={roleProfiles.backend.label}
+			>
+				{label}
+			</p>
 
 			<div class="resume-section resume-section-first">
 				<h2>{ui.print.personalDetails}</h2>
@@ -108,7 +119,14 @@ const printProjects = ["NewsFlow", "e-hutech"]
 
 	<section class="resume-section">
 		<h2>{ui.print.personalProfile}</h2>
-		<p>{summary}</p>
+		<p
+			data-role-content
+			data-role-fullstack={roleProfiles.fullstack.summary}
+			data-role-frontend={roleProfiles.frontend.summary}
+			data-role-backend={roleProfiles.backend.summary}
+		>
+			{summary}
+		</p>
 	</section>
 
 	{skillGroups.length > 0 && (
@@ -241,14 +259,14 @@ const printProjects = ["NewsFlow", "e-hutech"]
 </section>
 
 <style>
-	@media print {
-		.print-resume {
-			color: #2d2d2d;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 10.5pt;
-			line-height: 1.28;
-			padding: 12mm;
-		}
+		@media print {
+			.print-resume {
+				color: #2d2d2d;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 10.5pt;
+				line-height: 1.22;
+				padding: 12mm;
+			}
 
 		.resume-header {
 			display: grid;
@@ -344,15 +362,15 @@ const printProjects = ["NewsFlow", "e-hutech"]
 			color: #333333;
 		}
 
-		.resume-section p,
-		.resume-section li,
-		.resume-section dd,
-		.resume-section dt {
-			margin: 0;
-			font-size: 10.5pt;
-			line-height: 1.28;
-			color: #4f4f4f;
-		}
+			.resume-section p,
+			.resume-section li,
+			.resume-section dd,
+			.resume-section dt {
+				margin: 0;
+				font-size: 10.5pt;
+				line-height: 1.22;
+				color: #4f4f4f;
+			}
 
 		.detail-list {
 			display: grid;

@@ -2,6 +2,17 @@ import type { Locale } from "@/lib/i18n";
 import { localeResources } from "@/i18n/resources";
 import { withBase } from "@/lib/urls";
 
+export const ROLES = ["fullstack", "frontend", "backend"] as const;
+
+export type Role = (typeof ROLES)[number];
+
+export interface RoleProfile {
+	label: string;
+	summary: string;
+}
+
+export type RoleProfiles = Record<Role, RoleProfile>;
+
 export interface ResumeData {
 	basics: {
 		name: string;
@@ -11,6 +22,7 @@ export interface ResumeData {
 		phone: string;
 		url: string;
 		summary: string;
+		roleProfiles?: RoleProfiles;
 		theme?: string;
 		location: {
 			address: string;
@@ -77,13 +89,27 @@ export type ResumeCertificates = ResumeData["certificates"];
 export type ResumeSkills = ResumeData["skills"];
 export type ResumeProjects = ResumeData["projects"];
 
-export const getCv = (locale: Locale): ResumeData => {
+export const getRoleProfiles = ({
+	label,
+	summary,
+	roleProfiles,
+}: Pick<ResumeData["basics"], "label" | "summary" | "roleProfiles">): RoleProfiles =>
+	roleProfiles ?? {
+		fullstack: { label, summary },
+		frontend: { label, summary },
+		backend: { label, summary },
+	};
+
+export const getCv = (locale: Locale, role: Role = "fullstack"): ResumeData => {
 	const cv = localeResources[locale].cv;
+	const roleProfile = getRoleProfiles(cv.basics)[role];
 
 	return {
 		...cv,
 		basics: {
 			...cv.basics,
+			label: roleProfile.label,
+			summary: roleProfile.summary,
 			image: withBase(cv.basics.image),
 			url: withBase(cv.basics.url),
 		},

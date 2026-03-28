@@ -7,7 +7,21 @@
       "email": "vantaidinh04@gmail.com",
       "phone": "+84 93 781 3612",
       "url": "/",
-      "summary": "Tôi là ứng viên Intern Full Stack Developer yêu thích khám phá công nghệ mới và không ngừng học hỏi. Tôi mong muốn được phát triển kỹ năng front-end, back-end và tích lũy kinh nghiệm thực tế trong môi trường chuyên nghiệp.",
+      "summary": "Tôi định hướng vị trí Thực tập sinh Full Stack Developer với nền tảng ở cả frontend và backend web. Tôi đã làm việc với React, TypeScript, Node/Express, MongoDB và Docker trong các dự án thực tế, và mong muốn tiếp tục phát triển để xây dựng sản phẩm web hoàn chỉnh từ giao diện đến hệ thống phía server.",
+      "roleProfiles": {
+        "fullstack": {
+          "label": "Thực tập sinh Full Stack Developer",
+          "summary": "Tôi định hướng vị trí Thực tập sinh Full Stack Developer với nền tảng ở cả frontend và backend web. Tôi đã làm việc với React, TypeScript, Node/Express, MongoDB và Docker trong các dự án thực tế, và mong muốn tiếp tục phát triển để xây dựng sản phẩm web hoàn chỉnh từ giao diện đến hệ thống phía server."
+        },
+        "frontend": {
+          "label": "Thực tập sinh Frontend Developer",
+          "summary": "Tôi định hướng vị trí Thực tập sinh Frontend Developer, tập trung vào xây dựng giao diện web rõ ràng, responsive và dễ bảo trì với React, TypeScript và TailwindCSS. Tôi có kinh nghiệm triển khai màn hình, component và kết nối với API trong dự án thực tế, đồng thời muốn tiếp tục nâng cao kỹ năng về UI implementation, state handling và trải nghiệm người dùng."
+        },
+        "backend": {
+          "label": "Thực tập sinh Backend Developer",
+          "summary": "Tôi định hướng vị trí Thực tập sinh Backend Developer, tập trung vào thiết kế API, xử lý dữ liệu và vận hành dịch vụ với Node/Express, MongoDB và Docker. Tôi có kinh nghiệm xây dựng các chức năng như xác thực, upload tệp, quản lý nội dung và triển khai hệ thống, đồng thời muốn phát triển sâu hơn về kiến trúc backend, bảo mật và hiệu năng."
+        }
+      },
       "theme": "default",
       "location": {
         "address": "9A/L3 Hà Thị Khiêm",

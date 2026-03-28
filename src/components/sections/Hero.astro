@@ -17,7 +17,12 @@ interface Props {
 
 const { basics, ui } = Astro.props as Props;
 const { name, label, image, location, profiles, phone, email } = basics;
-const addressLine = [location.ward, location.city, location.region].filter(Boolean).join(", ");
+const roleProfiles = basics.roleProfiles ?? {
+	fullstack: { label: basics.label, summary: basics.summary },
+	frontend: { label: basics.label, summary: basics.summary },
+	backend: { label: basics.label, summary: basics.summary },
+};
+const addressLine = [location.city, location.region].filter(Boolean).join(", ");
 
 const SOCIAL_ICONS: SocialIcon = {
 	GitHub,
@@ -34,8 +39,16 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 <Section>
 	<div class="flex flex-col-reverse gap-8">
 		<div class="info">
-			<h1>{name}</h1>
-			<h2>{label}</h2>
+			<h1 data-person-name>{name}</h1>
+			<h2
+				data-role-content
+				data-role-fullstack={roleProfiles.fullstack.label}
+				data-role-frontend={roleProfiles.frontend.label}
+				data-role-backend={roleProfiles.backend.label}
+				data-role-label
+			>
+				{label}
+			</h2>
 			<div class="flex items-center gap-2 pt-2 text-sm text-skin-muted">
 				<WorldMap />
 				{addressLine}

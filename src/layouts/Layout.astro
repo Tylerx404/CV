@@ -21,8 +21,11 @@ const resolvedImage = new URL(image, Astro.site ?? Astro.url).toString();
 	<head>
 		<script is:inline>
 			const savedLocale = localStorage.getItem("locale") === "vi" ? "vi" : "en";
+			const validRoles = ["fullstack", "frontend", "backend"];
+			const savedRole = localStorage.getItem("role");
 			document.documentElement.setAttribute("lang", savedLocale);
 			document.documentElement.setAttribute("data-locale", savedLocale);
+			document.documentElement.setAttribute("data-role", validRoles.includes(savedRole || "") ? savedRole || "fullstack" : "fullstack");
 		</script>
 		<meta charset="UTF-8" />
 		<title>{title}</title>
